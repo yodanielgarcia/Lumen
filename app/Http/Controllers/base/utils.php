@@ -30,10 +30,4 @@ class utils extends Controller
         $response['data']=$data;
         return $response;
     } 
-    public static function transformArrayActive($request){
-        foreach ($request as $key => $value) {
-            $value->active = $value->active=="1"?"Activo":"Inactivo";  
-        }
-        return $request;
-    }
 }
