@@ -5,6 +5,7 @@ namespace App\Http\Controllers\ServicePagos;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
+use App\Http\Controllers\base\TablesController;
 
 class PagosController extends Controller
 {
@@ -85,16 +86,6 @@ class PagosController extends Controller
     }
     public function tablePagos()
     {
-        $varConsulta= DB::table("dblink.vis_lang_object")
-        ->select('object_name','translation')
-        ->where('lang_id',1)
-        ->limit(10)
-        ->get();
-        $arrayData = array();
-        foreach($varConsulta as $row){
-            //app('redis')->set($row->object_name,$row->translation);
-            $arrayData += array($row->object_name => $row->translation);
-                        }
-        return response()->json($arrayData);
+        return TablesController::tableTry();
     }
 }
