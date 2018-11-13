@@ -17,3 +17,5 @@ $router->get('api', function () use ($router) {
 
 $router->post('/serviceTraduccion', ['uses' =>'ServiceTraduction\TraducctionController@JsonTraducciones']);
 
+$router->get('/servicePagos', ['uses' =>'ServicePagos\PagosController@tablePagos']);
+

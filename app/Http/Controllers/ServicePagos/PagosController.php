@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\ServiceTraduction;
+namespace App\Http\Controllers\ServicePagos;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 
-class TraducctionController extends Controller
+class PagosController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -83,25 +83,18 @@ class TraducctionController extends Controller
     {
         //
     }
-    public function JsonTraducciones(Request $request)
+    public function tablePagos()
     {
-        //app('redis')->set('prueba','ok');
-        // return app('redis')->get('prueba');
-        if($request->isJson()){
-
-            $varConsulta= DB::table("dblink.vis_lang_object")
-            ->select('object_name','translation')
-            ->where('lang_id', $request['idioma'])
-            ->get();
-            $arrayData = array();
-            foreach($varConsulta as $row){
-                //app('redis')->set($row->object_name,$row->translation);
-                $arrayData += array($row->object_name => $row->translation);
-                            }
-            return response()->json($arrayData);
-        }
-        return response()->json(['error'=>'fail']);
-        
-        
+        $varConsulta= DB::table("dblink.vis_lang_object")
+        ->select('object_name','translation')
+        ->where('lang_id',1)
+        ->limit(10)
+        ->get();
+        $arrayData = array();
+        foreach($varConsulta as $row){
+            //app('redis')->set($row->object_name,$row->translation);
+            $arrayData += array($row->object_name => $row->translation);
+                        }
+        return response()->json($arrayData);
     }
 }

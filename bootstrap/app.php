@@ -63,6 +63,9 @@ $app->middleware([
    App\Http\Middleware\Cors::class
 ]);
 
+$app->register(Illuminate\Redis\RedisServiceProvider::class);
+
+$app->configure('database');
 // $app->routeMiddleware([
 //     'auth' => App\Http\Middleware\Authenticate::class,
 // ]);
