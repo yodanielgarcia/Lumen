@@ -36,4 +36,29 @@ class TablesController extends Controller
         return Response()->json($response, 200);
     }
 
+    public static function tableTryBTN($rol=null,$del=false){
+ 
+        $head_c= utils::buildHead('object_name','object_name data',true,'desc');
+        $head_doc= utils::buildHead('translation','translation data',true,'desc');
+         // set array
+        $fields = [
+            $head_c,
+            $head_doc,
+         ];
+          // select
+          
+          $varConsulta= DB::table("dblink.vis_lang_object")
+         ->select('object_name','translation')
+         ->where('lang_id',1)
+         ->get();
+         $actionsMethods = [''];
+              // set table
+         $table =  utils::buildTable($fields,$varConsulta,$actionsMethods);
+ 
+         $response = utils::buildResponse(1,"Tablas de data",$table);
+         return Response()->json($response, 200);
+     }
+
+    
+
 }

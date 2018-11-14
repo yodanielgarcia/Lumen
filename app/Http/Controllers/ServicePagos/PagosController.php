@@ -88,4 +88,9 @@ class PagosController extends Controller
     {
         return TablesController::tableTry();
     }
+
+    public function tablePagosBTN()
+    {
+        return TablesController::tableTryBTN();
+    }
 }

@@ -19,3 +19,5 @@ $router->post('/serviceTraduccion', ['uses' =>'ServiceTraduction\TraducctionCont
 
 $router->get('/servicePagos', ['uses' =>'ServicePagos\PagosController@tablePagos']);
 
+$router->get('/servicePagosBTN', ['uses' =>'ServicePagos\PagosController@tablePagosBTN']);
+
