@@ -5,7 +5,8 @@ namespace App\Http\Controllers\base;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\base\utils;
-
+use App\Models\traductions\vistaTraducciones;
+use App\Models\afiliado\afiliado;
 
 use DB;
 
@@ -21,8 +22,7 @@ class TablesController extends Controller
         ];
          // select
          // document, name, email, phone, mobile, profile, active
-         $varConsulta= DB::table("dblink.vis_lang_object")
-         ->select('object_name','translation')
+         $varConsulta= vistaTraducciones::select('object_name','translation')
          ->where('lang_id',1)
          ->limit(10)
          ->get();
@@ -38,8 +38,8 @@ class TablesController extends Controller
 
     public static function tableTryBTN($rol=null,$del=false){
  
-        $head_c= utils::buildHead('object_name','object_name data',true,'desc');
-        $head_doc= utils::buildHead('translation','translation data',true,'desc');
+        $head_c= utils::buildHead('id','id data',true,'desc');
+        $head_doc= utils::buildHead('nombres','Nombres data',true,'desc');
          // set array
         $fields = [
             $head_c,
@@ -47,9 +47,8 @@ class TablesController extends Controller
          ];
           // select
           
-          $varConsulta= DB::table("dblink.vis_lang_object")
-         ->select('object_name','translation')
-         ->where('lang_id',1)
+          $varConsulta= afiliado::select('id','nombres')
+         ->where('empresa','Salvador')
          ->get();
          $actionsMethods = [''];
               // set table

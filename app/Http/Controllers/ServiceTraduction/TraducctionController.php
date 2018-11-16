@@ -4,6 +4,7 @@ namespace App\Http\Controllers\ServiceTraduction;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\traductions\vistaTraducciones;
 use DB;
 
 class TraducctionController extends Controller
@@ -87,10 +88,10 @@ class TraducctionController extends Controller
     {
         //app('redis')->set('prueba','ok');
         // return app('redis')->get('prueba');
+        
         if($request->isJson()){
 
-            $varConsulta= DB::table("dblink.vis_lang_object")
-            ->select('object_name','translation')
+            $varConsulta= vistaTraducciones::select('object_name','translation')
             ->where('lang_id', $request['idioma'])
             ->get();
             $arrayData = array();
