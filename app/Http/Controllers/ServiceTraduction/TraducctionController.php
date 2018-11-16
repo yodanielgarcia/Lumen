@@ -102,7 +102,5 @@ class TraducctionController extends Controller
             return response()->json($arrayData);
         }
         return response()->json(['error'=>'fail']);
-        
-        
     }
 }

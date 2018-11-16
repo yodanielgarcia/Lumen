@@ -46,8 +46,7 @@ class TablesController extends Controller
             $head_doc,
          ];
           // select
-          
-          $varConsulta= afiliado::select('id','nombres')
+         $varConsulta= afiliado::select('id','nombres')
          ->where('empresa','Salvador')
          ->get();
          $actionsMethods = [''];
